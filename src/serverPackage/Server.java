@@ -5,7 +5,7 @@ public class Server {
 
 	public static void main(String[] args) throws Exception
 	{
-		InetAddress ip = InetAddress.getByName("192.168.1.14");
+		InetAddress ip = InetAddress.getLocalHost();
 		InetSocketAddress socketAddress = new InetSocketAddress(ip,1234);
 		ServerSocket socketServeur = new ServerSocket();
 		socketServeur.bind(socketAddress);
@@ -13,32 +13,39 @@ public class Server {
 		Socket socket = socketServeur.accept();
 		System.out.println("un client est connecté");
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		InputStream is=socket.getInputStream(); 
+		InputStreamReader isr=new InputStreamReader(is);
+		BufferedReader br = new BufferedReader(isr);
 		int x = Integer.parseInt(br.readLine());
-        int operation = Integer.parseInt(br.readLine());
-        double resultat = 0;
-        switch (operation) {
-        case 1: 
-            resultat = x + 5;
-            break;
-        case 2: 
-            resultat = x - 5;
-            break;
-        case 3: 
-            resultat = x * 5;
-            break;
-        case 4: 
-            resultat = (double) x / 5;
-            break;
-        default:
-            System.out.println("Option invalide");
-        }
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-        bw.write(resultat + "\n");
-        bw.flush();
+		String op=br.readLine();
+		int z=Integer.parseInt(br.readLine());
+		System.out.println("Formule reçue : " + x + " " + op + " " + z);
+		
+		double resultat = 0;
+		switch (op)
+		{
+		case "+":
+			resultat=x+z;
+			break;
+		case "-":
+			resultat=x-z;
+			break;
+		case "*":
+			resultat=x*z;
+			break;
+		case "/":
+			resultat=(double)x/z;
+			break;
+		default:
+            System.out.println("Opérateur invalide");
+		}
+		OutputStream os=socket.getOutputStream(); 
+		PrintWriter pw=new PrintWriter(os,true);
+        pw.println(resultat);
         br.close();
-        bw.close();
-		socketServeur.close();
+        socket.close();
+		
 	}
-
 }
+
+
