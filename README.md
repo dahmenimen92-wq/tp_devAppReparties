@@ -11,5 +11,17 @@ Développer une calculatrice avec 4 services de calcul (addition, soustraction, 
 Utilisation du tampon (BufferedReader/Writer) car il y a deux valeurs à envoyer (nombre et option).
 Le serveur effectue le calcul et renvoie le résultat au client.
 
+##Résultat TP2 Activité 1
+Amélioration de la calculatrice : le client envoie trois chaînes de caractères au serveur : deux nombres et un opérateur.
+Le serveur effectue le calcul correspondant et renvoie le résultat au client.
 
+Le serveur reçoit trois chaînes de caractères 
+Il utilise un InputStream pour lire le flux de données en octets depuis le client.
+Un InputStreamReader transforme ce flux d’octets en caractères 
+Un BufferedReader permet de stocker ces caractères dans un buffer et de lire le flux ligne par ligne.
+Le serveur effectue ensuite le calcul correspondant à l’opération reçue.
+Pour envoyer le résultat au client :
+Il utilise un OutputStream pour écrire le flux de sortie en octets.
+Un PrintWriter écrit le résultat sous forme de caractères dans ce flux, ce qui permet de transmettre correctement le résultat, même s’il comporte plusieurs octets.
 
+(meme principe cote client)
