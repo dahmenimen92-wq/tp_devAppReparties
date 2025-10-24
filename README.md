@@ -41,8 +41,13 @@ Pour que le serveur reçoive cet objet :
 Pour l'envoi / réception du résultat :  
 - On utilise une chaîne de caractères comme dans l'activité précédente
 
+##Résultat TP3 Activité 1
+Amélioration de l'activité précédente : le serveur est maintenant multithread, ce qui lui permet de traiter plusieurs clients en parallèle.
+Chaque client reçoit un numéro d’ordre de connexion, et le serveur affiche dans sa console l’adresse et le numéro de chaque client connecté.
+Les tests ont été réalisés avec plusieurs clients Telnet et les clients Java, confirmant que le serveur gère correctement plusieurs connexions simultanées.
 
-
+Le serveur utilise une boucle while(true) pour accepter en continu les connexions des clients.
+Pour chaque connexion, il crée un thread ClientProcess (extends Thread), ce qui permet de traiter chaque client en parallèle sans bloquer les autres.
 
 
 
