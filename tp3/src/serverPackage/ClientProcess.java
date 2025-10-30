@@ -1,6 +1,7 @@
 package serverPackage;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -22,9 +23,15 @@ public class ClientProcess extends Thread
 			try {
 				out = new PrintWriter(s.getOutputStream(),true);
 				out.println("client n"+count+" depuis "+s.getRemoteSocketAddress());
+				
+				OutputStream os=s.getOutputStream();
+				PrintWriter pw=new PrintWriter(os,true);
+				pw.println("numero d'ordre de connextion "+count);
+			
 			} catch (IOException e) {
 				e.printStackTrace();
-			}	
+			}
+			
     	}
     	
     	

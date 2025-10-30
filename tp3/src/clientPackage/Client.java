@@ -8,9 +8,9 @@ import java.net.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class Client {
-
-	public static void main(String[] args) throws UnknownHostException, IOException 
+public class Client 
+{
+    public static void main(String[] args) throws UnknownHostException, IOException 
 	{
 		 InetAddress serverIP = InetAddress.getLocalHost();
 		 InetSocketAddress add=new InetSocketAddress(serverIP,1234);

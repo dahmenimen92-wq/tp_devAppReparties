@@ -49,7 +49,11 @@ Les tests ont été réalisés avec plusieurs clients Telnet et les clients Java
 Le serveur utilise une boucle while(true) pour accepter en continu les connexions des clients.
 Pour chaque connexion, il crée un thread ClientProcess (extends Thread), ce qui permet de traiter chaque client en parallèle sans bloquer les autres.
 
-
+##TP3 activite 2
+Amélioration de l'activité précédente :
+le serveur multi-clients  effectue des calculs simples.
+Chaque client envoie deux nombres et un opérateur, et reçoit le résultat.
+Le serveur utilise un verrou static final pour protéger le compteur global d’opérations, assurant la cohérence en parallèle.
 
 
 
